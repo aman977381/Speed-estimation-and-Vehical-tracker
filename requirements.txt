@@ -1,0 +1,7 @@
+supervision
+tqdm
+requests
+ultralytics
+super-gradients
+numpy
+opencv-python
