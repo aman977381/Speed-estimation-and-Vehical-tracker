@@ -85,11 +85,6 @@ if __name__ == "__main__":
     view_transformer = ViewTransformer(source=SOURCE, target=TARGET)
 
 
-    # Set up video writer
-    output_path = 'output_video.mp4'
-    fourcc = cv2.VideoWriter_fourcc(*'mp4v')  # codec
-    out = cv2.VideoWriter(output_path, fourcc, video_info.fps, (video_info.resolution_wh))
-
     coordinates = defaultdict(lambda:deque(maxlen=video_info.fps))
 
 
@@ -127,8 +122,6 @@ if __name__ == "__main__":
         annotated_frame = label_annotator.annotate(
             scene=annotated_frame,detections=detections, labels=labels
         )
-
-        out.write(annotated_frame)
 
         screen_res = 1280, 720  # example screen resolution, adjust as needed
         scale_width = screen_res[0] / annotated_frame.shape[1]
